@@ -1,0 +1,11 @@
+name: <your project name>
+services:
+    azure-sql-edge:
+        environment:
+            - ACCEPT_EULA=1
+            - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
+            - MSSQL_PID=Developer
+        ports:
+            - 1433:1433
+        container_name: sql
+        image: mcr.microsoft.com/azure-sql-edge
