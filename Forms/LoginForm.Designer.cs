@@ -7,6 +7,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.CheckBox chkShowPassword;
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -19,6 +20,8 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.chkShowPassword = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -38,9 +41,9 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(306, 159);
+            this.btnLogin.Location = new System.Drawing.Point(315, 163);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(152, 36);
+            this.btnLogin.Size = new System.Drawing.Size(137, 27);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -63,9 +66,32 @@
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Password:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(568, 213);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 27);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Create Account";
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // chkShowPassword
+            // 
+            this.chkShowPassword.AutoSize = true;
+            this.chkShowPassword.Location = new System.Drawing.Point(280, 122);
+            this.chkShowPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.chkShowPassword.Name = "chkShowPassword";
+            this.chkShowPassword.Size = new System.Drawing.Size(102, 17);
+            this.chkShowPassword.TabIndex = 4;
+            this.chkShowPassword.Text = "Show Password";
+            this.chkShowPassword.UseVisualStyleBackColor = true;
+            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
+            // 
             // LoginForm
             // 
             this.ClientSize = new System.Drawing.Size(717, 252);
+            this.Controls.Add(this.chkShowPassword);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblPassword);
@@ -78,5 +104,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button button1;
     }
 }

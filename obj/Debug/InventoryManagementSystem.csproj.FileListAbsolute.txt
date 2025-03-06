@@ -113,3 +113,4 @@ D:\abdo\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
 D:\abdo\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
 D:\abdo\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.AdminForm.resources
 D:\abdo\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Forms.LoginForm.resources
+D:\abdo\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.RegisterForm.resources

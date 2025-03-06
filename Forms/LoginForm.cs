@@ -41,9 +41,17 @@ namespace InventoryManagementSystem.Forms
             txtPassword.Text = ""; 
             ActiveControl = txtUsername; 
         }
-        private void btnExit_Click(object sender, EventArgs e)
+
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            Application.Exit(); // Terminate the app
+            new RegisterForm().Show();
+            Hide();
+        }
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            // Toggle password visibility
+            txtPassword.PasswordChar = chkShowPassword.Checked ? '\0' : '*';
         }
     }
 }

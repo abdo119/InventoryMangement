@@ -77,4 +77,20 @@ public class AuthRepository
             }
         }
     }
+
+    public static bool UserExists(string username)
+    {using (var conn = DatabaseHelper.GetConnection())
+        {
+            var query =
+                "SELECT UserID, Username, Role FROM Users WHERE Username=@Username";
+            var cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Username", username);
+            conn.Open();
+            var reader = cmd.ExecuteReader();
+            if (reader.Read())
+                return true;
+            return false;
+        }
+
+    }
 }
