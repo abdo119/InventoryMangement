@@ -3,43 +3,42 @@ using System.Windows.Forms;
 using InventoryManagementSystem.Forms;
 using InventoryManagementSystem.Models;
 
-namespace InventoryManagementSystem
+namespace InventoryManagementSystem;
+
+public partial class AdminForm : Form
 {
-    public partial class AdminForm : Form
+    private readonly User loggedInUser;
+
+    public AdminForm(User user)
     {
-        private readonly User loggedInUser;
+        InitializeComponent();
+        loggedInUser = user;
+    }
 
-        public AdminForm(User user)
-        {
-            InitializeComponent();
-            loggedInUser = user;
-        }
+    private void btnViewProducts_Click(object sender, EventArgs e)
+    {
+        new ProductForm(loggedInUser).Show();
+    }
 
-        private void btnViewProducts_Click(object sender, EventArgs e)
-        {
-           new ProductForm(loggedInUser).Show();
-        }
-        private void btnTerlikGrid_Click(object sender, EventArgs e)
-        {
-            Application.EnableVisualStyles();
-            new InventoryForm().Show();
+    private void btnTerlikGrid_Click(object sender, EventArgs e)
+    {
+        Application.EnableVisualStyles();
+        new InventoryForm().Show();
+    }
 
-        }
+    private void btnSearch_Click(object sender, EventArgs e)
+    {
+        new SearchForm(loggedInUser).Show();
+    }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            new SearchForm(loggedInUser).Show();
-        }
-        
 
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            new LoginForm().Show();
-        }
+    private void btnLogout_Click(object sender, EventArgs e)
+    {
+        Close();
+        new LoginForm().Show();
+    }
 
-        private void AdminForm_Load(object sender, EventArgs e)
-        {
-        }
+    private void AdminForm_Load(object sender, EventArgs e)
+    {
     }
 }

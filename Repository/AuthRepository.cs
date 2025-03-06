@@ -79,7 +79,8 @@ public class AuthRepository
     }
 
     public static bool UserExists(string username)
-    {using (var conn = DatabaseHelper.GetConnection())
+    {
+        using (var conn = DatabaseHelper.GetConnection())
         {
             var query =
                 "SELECT UserID, Username, Role FROM Users WHERE Username=@Username";
@@ -91,6 +92,5 @@ public class AuthRepository
                 return true;
             return false;
         }
-
     }
 }

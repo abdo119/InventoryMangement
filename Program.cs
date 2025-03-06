@@ -2,18 +2,16 @@
 using System.Windows.Forms;
 using InventoryManagementSystem.Forms;
 
-namespace InventoryManagementSystem
-{
-    internal static class Program
-    {
-        [STAThread]
+namespace InventoryManagementSystem;
 
-        static void Main()
-        {
-            Console.WriteLine("Application starting...");
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
-        }
+internal static class Program
+{
+    [STAThread]
+    private static void Main()
+    {
+        Console.WriteLine("Application starting...");
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new LoginForm());
     }
 }

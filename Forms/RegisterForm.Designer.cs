@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace InventoryManagementSystem
+﻿namespace InventoryManagementSystem.Forms
 {
     partial class RegisterForm
     {

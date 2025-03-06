@@ -4,42 +4,39 @@ using InventoryManagementSystem.Forms;
 using InventoryManagementSystem.Models;
 using InventoryManagementSystem.Repository;
 
-namespace InventoryManagementSystem
+namespace InventoryManagementSystem;
+
+public partial class ViewerForm : Form
 {
-    public partial class ViewerForm : Form
+    private readonly User loggedInUser;
+
+    public ViewerForm(User user)
     {
-        private readonly User loggedInUser;
+        InitializeComponent();
+        LoadProducts();
+        loggedInUser = user;
+    }
 
-        public ViewerForm(User user)
-        {
-            InitializeComponent();
-            LoadProducts();
-            loggedInUser = user;
+    private void LoadProducts()
+    {
+        var products = ProductRepository.GetAllProducts();
+        dataGridViewProducts.DataSource = products;
+    }
 
-        }
+    private void btnSearch_Click(object sender, EventArgs e)
+    {
+        new SearchForm(loggedInUser).Show();
+    }
 
-        private void LoadProducts()
-        {
-            var products = ProductRepository.GetAllProducts();
-            dataGridViewProducts.DataSource = products;
-        }
+    private void btnTerlikGrid_Click(object sender, EventArgs e)
+    {
+        Application.EnableVisualStyles();
+        new InventoryForm().Show();
+    }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-           new SearchForm(loggedInUser).Show();
-        }
-
-        private void btnTerlikGrid_Click(object sender, EventArgs e)
-        {
-            Application.EnableVisualStyles();
-            new InventoryForm().Show();
-
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            new LoginForm().Show();
-        }
+    private void btnLogout_Click(object sender, EventArgs e)
+    {
+        Close();
+        new LoginForm().Show();
     }
 }
