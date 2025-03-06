@@ -110,6 +110,7 @@
         <Reference Include="System.DirectoryServices"/>
         <Reference Include="System.DirectoryServices.AccountManagement"/>
         <Reference Include="System.DirectoryServices.Protocols"/>
+        <Reference Include="System.Drawing" />
         <Reference Include="System.Drawing.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
             <HintPath>..\packages\System.Drawing.Common.10.0.0-preview.1.25080.3\lib\net462\System.Drawing.Common.dll</HintPath>
         </Reference>
@@ -245,6 +246,36 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DataAccess\DatabaseHelper.cs"/>
+        <Compile Include="Forms\AdminForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\AdminForm.Designer.cs">
+          <DependentUpon>AdminForm.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\LoginForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\LoginForm.Designer.cs">
+          <DependentUpon>LoginForm.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\ProductForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\ProductForm.Designer.cs">
+          <DependentUpon>ProductForm.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\SearchForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\SearchForm.Designer.cs">
+          <DependentUpon>SearchForm.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\ViewerForm.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\ViewerForm.Designer.cs">
+          <DependentUpon>ViewerForm.cs</DependentUpon>
+        </Compile>
         <Compile Include="InventoryForm.cs"/>
         <Compile Include="Models\Product.cs"/>
         <Compile Include="Models\User.cs"/>
@@ -256,6 +287,20 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config"/>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="Forms\AdminForm.resx">
+        <DependentUpon>AdminForm.cs</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Forms\LoginForm.resx">
+        <DependentUpon>LoginForm.cs</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Forms\ProductForm.resx">
+        <DependentUpon>ProductForm.cs</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Forms\ViewerForm.resx">
+        <DependentUpon>ViewerForm.cs</DependentUpon>
+      </EmbeddedResource>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
