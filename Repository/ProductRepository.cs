@@ -105,6 +105,7 @@ public class ProductRepository
                             ProductID = reader.GetInt32(reader.GetOrdinal("ProductID")),
                             ProductName = reader.GetString(reader.GetOrdinal("ProductName")),
                             Description = reader.GetString(reader.GetOrdinal("Description")),
+                            SupplierName = reader.GetString(reader.GetOrdinal("SupplierName")),
                             QuantityInStock = reader.GetInt32(reader.GetOrdinal("QuantityInStock")),
                             Price = reader.GetDecimal(reader.GetOrdinal("Price"))
                         };
@@ -112,7 +113,7 @@ public class ProductRepository
             }
         }
 
-        return null; // Return null if product not found
+        return null; 
     }
 
 
@@ -124,18 +125,19 @@ public class ProductRepository
             var query =
                 "UPDATE Products SET ProductName=@ProductName, Description=@Description, QuantityInStock=@QuantityInStock, Price=@Price, SupplierName=@SupplierName WHERE ProductID=@ProductID";
             var cmd = new SqlCommand(query, conn);
+            var oldProduct = GetProductById(product.ProductID);
+            Product productToUpdate = validateUpdate(product, oldProduct);
 
             cmd.Parameters.AddWithValue("@ProductID", product.ProductID);
-            cmd.Parameters.AddWithValue("@ProductName", product.ProductName);
-            cmd.Parameters.AddWithValue("@Description", product.Description);
-            cmd.Parameters.AddWithValue("@QuantityInStock", product.QuantityInStock);
-            cmd.Parameters.AddWithValue("@Price", product.Price);
-            cmd.Parameters.AddWithValue("@SupplierName", product.SupplierName);
+            cmd.Parameters.AddWithValue("@ProductName", productToUpdate.ProductName);
+            cmd.Parameters.AddWithValue("@Description", productToUpdate.Description);
+            cmd.Parameters.AddWithValue("@QuantityInStock", productToUpdate.QuantityInStock);
+            cmd.Parameters.AddWithValue("@Price", productToUpdate.Price);
+            cmd.Parameters.AddWithValue("@SupplierName", productToUpdate.SupplierName);
 
             try
             {
                 conn.Open();
-                var oldProduct = GetProductById(product.ProductID);
                 var rowsAffected = cmd.ExecuteNonQuery();
                 LogAudit("Update", product.ProductID, username, toJson(oldProduct),
                     toJson(GetProductById(product.ProductID)));
@@ -316,5 +318,58 @@ public class ProductRepository
     public static string toJson(Product product)
     {
         return JsonConvert.SerializeObject(product);
+    }
+
+    private static Product validateUpdate(Product newProduct, Product oldProduct)
+    
+    {
+        
+        Product product = new Product();
+        if (string.IsNullOrEmpty(newProduct.ProductName))
+        {
+            product.ProductName = oldProduct.ProductName;
+        }
+        else
+        {
+            product.ProductName = newProduct.ProductName;
+        }
+
+        if (string.IsNullOrEmpty(newProduct.Description))
+        {
+            product.Description = oldProduct.Description;
+        }
+        else
+        {
+            product.Description = newProduct.Description;
+        }
+        if (string.IsNullOrEmpty(newProduct.SupplierName))
+        {
+            product.SupplierName = oldProduct.SupplierName;
+        }
+        else
+        {
+            product.SupplierName = newProduct.SupplierName;
+        }
+
+        if (newProduct.QuantityInStock == -1)
+        {
+            product.QuantityInStock = oldProduct.QuantityInStock;
+        }
+        else
+        {
+            product.QuantityInStock = newProduct.QuantityInStock;
+        }
+
+        if (newProduct.Price  == -1)
+        {
+            product.Price = oldProduct.Price;
+        }
+        else
+        {
+            product.Price = newProduct.Price;
+        }
+        return product;
+
+
     }
 }

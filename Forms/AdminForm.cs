@@ -18,6 +18,7 @@ public partial class AdminForm : Form
     private void btnViewProducts_Click(object sender, EventArgs e)
     {
         new ProductForm(loggedInUser).Show();
+        Hide();
     }
 
     private void btnTerlikGrid_Click(object sender, EventArgs e)

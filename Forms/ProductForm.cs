@@ -62,8 +62,8 @@ public partial class ProductForm : Form
             ProductID = productId,
             ProductName = txtName.Text.Trim(),
             Description = txtDescription.Text.Trim(),
-            QuantityInStock = int.Parse(txtQuantity.Text),
-            Price = decimal.Parse(txtPrice.Text),
+            QuantityInStock = int.Parse(txtQuantity.Text == ""? "-1":txtQuantity.Text),
+            Price = decimal.Parse(txtPrice.Text == ""? "-1":txtPrice.Text),
             SupplierName = txtSupplier.Text.Trim()
         };
 
@@ -104,5 +104,6 @@ public partial class ProductForm : Form
     private void button1_Click(object sender, EventArgs e)
     {
         Close();
+        new AdminForm(loggedInUser).Show();
     }
 }
